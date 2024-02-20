@@ -43,12 +43,10 @@ def add_user():
         ''').lower()
         if stts == "n":
             print("database closed")
-            cac()
         elif stts == "y":
             cr.execute(f"update user set name = '{name}' where name_id = {nid}")
             cr.execute(f"update user set skill = '{sk}' where name_id = {nid}")
             print("username and skill updated successfully")
-            cac()
 def update_user():
     status = input('''
     what are you updating:   
@@ -59,23 +57,20 @@ def update_user():
     ''')
     if status == "n":
         id = input("enter the id of the name you want to update:   ")
-        nm = input("inser updated name:   ").lower().strip()
+        nm = input("insert updated name:   ").lower().strip()
         cr.execute(f"update user set name = '{nm}' where name_id = {id}")
         print("name updated successfully")
-        cac()
     elif status == "s":
         id = input("enter the id of the skill you want to update:   ")
         ns = input("insert updated skill:   ").lower().strip()
         cr.execute(f"update user set skill = '{ns}' where name_id = {id}")
         print("skill updated successfully")
-        cac()
     elif status == "i":
         name = input("enter the username that you want to change his id    :").lower().strip()
         skill = input("enter the skill of the username that you want to change his id:   ").lower().strip()
         new_id = input("insert updated id:   ")
         cr.execute(f"update user set name_id = {new_id} where name = '{name}' and skill = '{skill}'")
         print("name_id updated successfully")
-        cac()
     else:
         raise NameError("the input given is invalid")
 def delete_user():
@@ -89,6 +84,7 @@ def show_user():
     print(f"there are {len(users)} users stored in the database")
     for i in users:
         print(f"username is ({i[0]}), user skill is ==> ({i[1]}), and user id is ({i[2]})")
+
 if user_input in command_list:
     if user_input == "a":
         add_user()
@@ -106,4 +102,4 @@ if user_input in command_list:
         print("closed database")
         cac()
 else:
-    print(f"command '{user_input}' not found")
+    print(f"invalid command")
