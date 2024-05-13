@@ -1,7 +1,7 @@
 import sqlite3
 members = ["amine","samuel","mohamed","adam"]
 name = input("please insert your name:  ")
-if name in members:
+if name in members:f
     db = sqlite3.connect("app.db")
     cr = db.cursor()
     cr.execute("select * from user")
